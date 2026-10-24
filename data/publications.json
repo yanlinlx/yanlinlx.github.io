@@ -1,0 +1,82 @@
+[
+  {
+    "_comment": "One object per paper. `featured: true` also pins it to the homepage. Bold in the author list follows profile.highlight_author. `volume_pages` is free text.",
+
+    "title": "SYNBIP 2.0: epitopes mapping, sequence expansion and scaffolds discovery for synthetic binding protein innovation",
+    "authors": ["Yanlin Li", "Fengcheng Li", "Zixin Duan", "Ruihan Liu", "Wantong Jiao", "Haibo Wu", "Feng Zhu", "Weiwei Xue"],
+    "venue": "Nucleic Acids Research",
+    "volume_pages": "53(D1): D595–D603",
+    "year": 2025,
+    "type": "Journal article",
+    "featured": true,
+    "links": [
+      { "label": "DOI", "url": "https://doi.org/10.1093/nar/gkae893" },
+      { "label": "PubMed", "url": "https://pubmed.ncbi.nlm.nih.gov/39413165/" },
+      { "label": "Database", "url": "https://idrblab.org/synbip/" }
+    ]
+  },
+  {
+    "title": "Data and AI-driven synthetic binding protein discovery",
+    "authors": ["Yanlin Li", "Zixin Duan", "Zhenwen Li", "Weiwei Xue"],
+    "venue": "Trends in Pharmacological Sciences",
+    "volume_pages": "46(2): 132–144",
+    "year": 2025,
+    "type": "Review",
+    "featured": true,
+    "links": [
+      { "label": "DOI", "url": "https://doi.org/10.1016/j.tips.2024.12.002" },
+      { "label": "PubMed", "url": "https://pubmed.ncbi.nlm.nih.gov/39755458/" }
+    ]
+  },
+  {
+    "title": "Expanding the sequence spaces of synthetic binding protein using deep learning-based framework ProteinMPNN",
+    "authors": ["Yanlin Li", "Wantong Jiao", "Ruihan Liu", "Xuejin Deng", "Feng Zhu", "Weiwei Xue"],
+    "venue": "Frontiers of Computer Science",
+    "volume_pages": "19(5): 195903",
+    "year": 2025,
+    "type": "Journal article",
+    "featured": true,
+    "links": [
+      { "label": "DOI", "url": "https://doi.org/10.1007/s11704-024-31060-3" }
+    ]
+  },
+  {
+    "title": "Predicting epitopes of synthetic binding proteins using protein structure prediction and protein–protein docking",
+    "authors": ["Arzu Mijit", "Yanlin Li", "Weiwei Xue"],
+    "venue": "Methods in Molecular Biology",
+    "volume_pages": "2937: 245–259",
+    "year": 2025,
+    "type": "Book chapter",
+    "featured": false,
+    "links": [
+      { "label": "DOI", "url": "https://doi.org/10.1007/978-1-0716-4591-8_15" },
+      { "label": "PubMed", "url": "https://pubmed.ncbi.nlm.nih.gov/40593425/" }
+    ]
+  },
+  {
+    "title": "Mapping synthetic binding proteins epitopes on diverse protein targets by protein structure prediction and protein–protein docking",
+    "authors": ["Arzu Mijit", "Xiaona Wang", "Yanlin Li", "Hangwei Xu", "Yingjun Chen", "Weiwei Xue"],
+    "venue": "Computers in Biology and Medicine",
+    "volume_pages": "163: 107183",
+    "year": 2023,
+    "type": "Journal article",
+    "featured": false,
+    "links": [
+      { "label": "DOI", "url": "https://doi.org/10.1016/j.compbiomed.2023.107183" },
+      { "label": "PubMed", "url": "https://pubmed.ncbi.nlm.nih.gov/37352638/" }
+    ]
+  },
+  {
+    "title": "SYNBIP: synthetic binding proteins for research, diagnosis and therapy",
+    "authors": ["Xiaona Wang", "Fengcheng Li", "Wenqi Qiu", "Binbin Xu", "Yanlin Li", "Xichen Lian", "Hongyan Yu", "Zhao Zhang", "Jianxin Wang", "Zhaorong Li", "Weiwei Xue", "Feng Zhu"],
+    "venue": "Nucleic Acids Research",
+    "volume_pages": "50(D1): D560–D570",
+    "year": 2022,
+    "type": "Journal article",
+    "featured": false,
+    "links": [
+      { "label": "DOI", "url": "https://doi.org/10.1093/nar/gkab926" },
+      { "label": "Database", "url": "https://idrblab.org/synbip/" }
+    ]
+  }
+]

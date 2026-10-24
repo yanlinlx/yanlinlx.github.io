@@ -1,0 +1,87 @@
+{
+  "_comment": "Powers cv.html. Each entry: {left, title, meta, details[]}. `title` and `details` accept simple HTML (use <em> for emphasis, &amp; for an ampersand). `left` is the date column.",
+
+  "education": [
+    {
+      "left": "2023 – 2026",
+      "title": "MSc in Pharmaceutical Sciences",
+      "meta": "Bioinformatics and Drug Design · Chongqing University, Chongqing, China",
+      "details": ["GPA 3.87 / 4.0 — ranked 2nd of 102"]
+    },
+    {
+      "left": "2019 – 2023",
+      "title": "BSc in Pharmaceutical Science",
+      "meta": "Chongqing University, Chongqing, China",
+      "details": ["GPA 3.72 / 4.0 — ranked 2nd of 47"]
+    }
+  ],
+
+  "honors": [
+    {
+      "left": "",
+      "title": "Top 10 Academic Stars of Chongqing University",
+      "meta": "8th edition",
+      "details": []
+    },
+    {
+      "left": "",
+      "title": "First-Class Postgraduate Scholarship",
+      "meta": "Chongqing University · 2022–2023 academic year",
+      "details": []
+    },
+    {
+      "left": "",
+      "title": "National Scholarship for Undergraduate Students",
+      "meta": "Top 0.2% nationally · 2021–2022 academic year",
+      "details": []
+    },
+    {
+      "left": "",
+      "title": "Excellent League Member of Chongqing University",
+      "meta": "2019–2024, every academic year",
+      "details": []
+    },
+    {
+      "left": "",
+      "title": "Outstanding Student Cadre of Chongqing University",
+      "meta": "2019–2020 and 2023–2024 academic years",
+      "details": []
+    }
+  ],
+
+  "competitions": [
+    {
+      "left": "",
+      "title": "The 19th \u201cChallenge Cup\u201d National College Student Academic Science and Technology Competition",
+      "meta": "Project leader · Third Prize, provincial level",
+      "details": []
+    },
+    {
+      "left": "2025",
+      "title": "Chongqing University Student Innovation Competition",
+      "meta": "Project leader · Second Prize, school level",
+      "details": []
+    },
+    {
+      "left": "2022",
+      "title": "National College Student Social Practice and Science &amp; Technology Competition on Energy Conservation and Emission Reduction",
+      "meta": "Second Prize, national level",
+      "details": []
+    },
+    {
+      "left": "2020",
+      "title": "National Undergraduate Mathematics Competition",
+      "meta": "Second Prize, provincial level",
+      "details": []
+    }
+  ],
+
+  "skills": [
+    { "group": "Programming", "items": ["Python", "Shell", "Anaconda"] },
+    { "group": "Computational biology", "items": ["Protein molecular dynamics simulation", "Molecular docking", "Protein–protein interaction analysis"] },
+    { "group": "Software", "items": ["Amber (Linux)", "Rosetta", "AutoDock", "Jalview", "Chimera", "PyMOL"] },
+    { "group": "Experimental", "items": ["Oral gavage in mice", "Cell culture", "Cell-based assays (incl. compound toxicity testing)"] },
+    { "group": "Research tools", "items": ["EndNote", "Origin", "Gephi", "GraphPad Prism"] },
+    { "group": "Writing", "items": ["Academic reports", "Manuscript preparation"] }
+  ]
+}

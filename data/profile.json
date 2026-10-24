@@ -1,0 +1,41 @@
+{
+  "name": "Yanlin Li",
+  "name_zh": "",
+  "role": "Computational protein & peptide design · AI-driven drug discovery",
+  "affiliation": "School of Pharmaceutical Sciences, Chongqing University",
+  "location": "Chongqing, China",
+  "email": "liyanlin@cqu.edu.cn",
+  "avatar": "assets/avatar.svg",
+  "site_url": "",
+  "description": "Yanlin Li — computational protein and peptide design at Chongqing University. Generative models, synthetic binding proteins, and structure-based drug discovery.",
+  "highlight_author": "Yanlin Li",
+
+  "bio": [
+    "I am a computational biologist at the School of Pharmaceutical Sciences, Chongqing University, working on the AI-driven design of proteins and peptides. My focus is synthetic binding proteins (SBPs) — small engineered binders that compete with antibodies on specificity and affinity while being cheaper to produce and easier to deliver.",
+    "My work runs along three threads. I maintain SYNBIP, the reference database for synthetic binding proteins, and co-led its 2.0 release. I apply deep-learning design frameworks such as ProteinMPNN to expand the sequence space of known SBP scaffolds. And most recently I have been training a diffusion-based generative model for peptide design, with an external property predictor wired in as a constraint.",
+    "What ties this together is a bias toward verification: solubility, thermal stability and binding affinity get checked rather than assumed, whether the candidate came out of a generative model or a docking run."
+  ],
+
+  "interests": [
+    "Generative models for protein and peptide design (diffusion models, ProteinMPNN)",
+    "Synthetic binding proteins — scaffolds, epitopes and sequence space",
+    "Protein structure prediction and protein–protein docking",
+    "Bioinformatics database curation and automated data mining",
+    "AI for early-stage drug discovery"
+  ],
+
+  "links": [
+    { "label": "Email", "url": "mailto:liyanlin@cqu.edu.cn" },
+    { "label": "Google Scholar", "url": "https://scholar.google.com/citations?user=2ziiUyIAAAAJ" },
+    { "label": "SYNBIP database", "url": "https://synbip.idrblab.net/" },
+    { "label": "CV", "url": "cv.html" }
+  ],
+
+  "news": [
+    { "date": "Now", "text": "Open to PhD positions in computational protein design and AI-aided drug discovery." },
+    { "date": "May 2025", "text": "ProteinMPNN sequence-space paper published in <em>Frontiers of Computer Science</em>." },
+    { "date": "Feb 2025", "text": "Review on data- and AI-driven SBP discovery published in <em>Trends in Pharmacological Sciences</em>." },
+    { "date": "Jan 2025", "text": "SYNBIP 2.0 published in <em>Nucleic Acids Research</em>." },
+    { "date": "Sep 2024", "text": "Began industry research training in the pharmacology group at China Resources Double Crane Pharmaceutical." }
+  ]
+}
