@@ -161,6 +161,8 @@ p { margin: 0 0 1em; }
 }
 .link-pill:hover { border-color: var(--accent); color: var(--accent-ink); background: var(--accent-soft); text-decoration: none; }
 
+/* (CV download button styles removed — button no longer used) */
+
 /* ----------------------------------------------------------- home main */
 
 .page-head { padding-top: 48px; margin-bottom: 36px; }
@@ -220,18 +222,41 @@ p { margin: 0 0 1em; }
 
 .cards { display: grid; gap: 18px; }
 .card {
+  display: flex; gap: 18px; align-items: flex-start;
   border: 1px solid var(--border); background: var(--surface);
-  border-radius: var(--radius); padding: 22px 24px;
+  border-radius: var(--radius); padding: 18px 20px;
 }
+.card-body { flex: 1 1 auto; min-width: 0; }
 .card h3 { margin: 0 0 4px; }
 .card .period { font-size: .82rem; color: var(--faint); margin: 0 0 10px; font-variant-numeric: tabular-nums; }
 .card p { font-size: .945rem; color: var(--muted); margin: 0 0 14px; }
 .card .tags { margin-bottom: 14px; }
 .card .pub-links { margin: 0; }
 
-/* ------------------------------------------------------------- videos */
+/* project card media (animated gif / image / embedded video) — left column */
+.card-media {
+  flex: 0 0 30%; max-width: 30%;
+  margin: 0; border-radius: calc(var(--radius) - 4px);
+  overflow: hidden; background: var(--surface-2);
+}
+.card-media img, .card-media video {
+  display: block; width: 100%; height: auto;
+}
+.card-media .video-wrap { position: relative; padding-top: 56.25%; }
+.card-media .video-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.card-media figcaption { padding: 7px 10px; font-size: .74rem; color: var(--faint); }
 
-.video-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+/* ------------------------------------------------------------- student life gallery */
+
+.gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.gallery figure {
+  margin: 0; border: 1px solid var(--border); background: var(--surface-2);
+  border-radius: var(--radius); overflow: hidden;
+}
+.gallery img { display: block; width: 100%; height: 190px; object-fit: cover; }
+.gallery figcaption { padding: 8px 11px; font-size: .8rem; color: var(--muted); }
+@media (max-width: 760px) { .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 480px) { .gallery { grid-template-columns: 1fr; } .gallery img { height: 220px; } }
 
 .video { border: 1px solid var(--border); background: var(--surface); border-radius: var(--radius); overflow: hidden; }
 
@@ -281,8 +306,20 @@ p { margin: 0 0 1em; }
 .skill-row { margin-bottom: 16px; }
 .skill-row h3 { font-size: .95rem; margin: 0 0 7px; }
 
+/* student-life milestone photos */
+.entry-media { margin: 16px 0 4px; }
+.entry-media img {
+  display: block; width: 100%; height: auto;
+  border-radius: calc(var(--radius) - 4px);
+  border: 1px solid var(--border); background: var(--surface-2);
+}
+.entry-media.two { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.entry-media.two img { height: 230px; object-fit: cover; }
+
 @media (max-width: 620px) {
   .entry { grid-template-columns: 1fr; gap: 4px; }
+  .entry-media.two { grid-template-columns: 1fr; }
+  .entry-media.two img { height: auto; }
 }
 
 /* ------------------------------------------------------------- footer */
@@ -310,6 +347,9 @@ p { margin: 0 0 1em; }
   .pub-year { font-size: .9rem; }
   .wrap { padding: 0 18px; }
   h1 { font-size: 1.6rem; }
+  .card { flex-direction: column; gap: 12px; }
+  .card-media { flex-basis: auto; max-width: none; width: 100%; }
+  .card-media img, .card-media video { height: auto; }
 }
 
 @media print {

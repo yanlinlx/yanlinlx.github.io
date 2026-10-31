@@ -1,40 +1,107 @@
 [
   {
-    "_comment": "One object per project. `featured: true` pins it to the homepage. `period` is free text — role can go in there too.",
+    "_comment": "One object per project. `featured: true` pins it to the homepage. `period` is free text — role can go in there too. `media` points at a gif/image in assets/gifs/ or assets/img/ (or a {src} / {youtube} object); missing files are skipped, not broken.",
     "title": "Generative peptide design with diffusion models",
-    "period": "Feb. 2025 – present · principal investigator",
-    "summary": "Training a diffusion-based generative model for peptide design, extending the PepGLAD framework. I curated a much larger peptide–target complex dataset for training, fine-tuned on diverse subsets to raise the design success rate, and wired an external protein property predictor in as a constraint so that generation is steered toward peptides with real therapeutic relevance.",
-    "tags": ["Diffusion models", "Peptide design", "Generative AI", "Dataset curation"],
+    "period": "Feb. 2025 – Mar. 2026 · principal investigator",
+    "summary": "De novo peptide design is bottlenecked by a near-infinite sequence space, and most generated sequences never fold or bind. I extended the PepGLAD diffusion framework and built a much larger peptide–target complex training set to broaden its reach, then wired an external property predictor (solubility, stability) in as a constraint so generation is steered toward sequences likely to work as drugs — not just look plausible.",
+    "tags": [
+      "Diffusion models",
+      "Peptide design",
+      "Generative AI",
+      "Dataset curation"
+    ],
     "featured": true,
-    "links": []
+    "media": "assets/img/proj_peptide_diffusion.jpg",
+    "links": [],
+    "kind": "research"
   },
   {
     "title": "SYNBIP 2.0 — synthetic binding protein database",
     "period": "Jul. 2023 – Sept. 2024 · principal investigator",
-    "summary": "Led the major update of SYNBIP, the reference database for synthetic binding proteins, addressing fragmented data, inconsistent standards, missing epitope information and narrow scaffold diversity. The update added 3D structures for 899 SBP–target complexes, expanded the SBP sequence space fivefold to 12,025, and catalogued over 16 million candidate scaffolds mined from the PDB and AlphaFold DB. Built with manual literature curation, protein–protein docking, structural alignment, AI and automated web-crawling pipelines.",
-    "tags": ["Database", "Data curation", "Protein–protein docking", "Web mining"],
+    "summary": "Synthetic binding proteins offer cheaper, easier-to-deliver alternatives to antibodies, yet the field's data was fragmented, inconsistently annotated, and missing the 3D-structure and epitope detail needed to design new ones. As lead of SYNBIP 2.0 I consolidated it: 3D structures for 899 SBP–target complexes, a fivefold expansion of the sequence space to 12,025 curated SBPs, and over 16 million candidate scaffolds mined from the PDB and AlphaFold DB — built from manual curation, protein–protein docking, structural alignment, AI annotation and automated web-mining.",
+    "tags": [
+      "Database",
+      "Data curation",
+      "Protein–protein docking",
+      "Web mining"
+    ],
     "featured": true,
+    "media": "assets/img/proj_synbip2.jpg",
     "links": [
-      { "label": "Database", "url": "https://synbip.idrblab.net/" },
-      { "label": "Paper", "url": "https://doi.org/10.1093/nar/gkae893" }
-    ]
+      {
+        "label": "Database",
+        "url": "https://synbip.idrblab.net/"
+      },
+      {
+        "label": "Paper",
+        "url": "https://doi.org/10.1093/nar/gkae893"
+      }
+    ],
+    "kind": "research"
   },
   {
     "title": "Expanding the sequence space of synthetic binding proteins",
     "period": "Nov. 2022 – Mar. 2023 · principal investigator",
-    "summary": "Applied the deep-learning design framework ProteinMPNN to synthetic binding proteins, sidestepping the dependence of site-directed mutagenesis on parent-protein structure. Designed 7,245 new sequences across 55 scaffolds and screened them in silico: the generated proteins showed improved solubility and thermal stability over known SBPs, and eight scaffolds turned out to be especially well suited to the method.",
-    "tags": ["ProteinMPNN", "De novo design", "Deep learning", "Solubility / stability"],
+    "summary": "Redesigning SBPs by site-directed mutagenesis is capped by its reliance on a known parent structure. I used ProteinMPNN to generate sequences from structure alone — 7,245 candidates across 55 scaffolds, screened in silico — and the designed proteins showed better solubility and thermal stability than known SBPs. Eight scaffolds stood out as especially amenable to deep-learning design, a practical map of where the method earns its keep.",
+    "tags": [
+      "ProteinMPNN",
+      "De novo design",
+      "Deep learning",
+      "Solubility / stability"
+    ],
     "featured": true,
+    "media": "assets/img/proj_seqspace.jpg",
     "links": [
-      { "label": "Paper", "url": "https://doi.org/10.1007/s11704-024-31060-3" }
-    ]
+      {
+        "label": "Paper",
+        "url": "https://doi.org/10.1007/s11704-024-31060-3"
+      }
+    ],
+    "kind": "research"
   },
   {
-    "title": "AI for pharmacology — industry research training",
-    "period": "Sept. 2024 – present · China Resources Double Crane Pharmaceutical",
-    "summary": "Evaluated and deployed machine-learning models for pharmacology tasks, providing technical support to early drug-discovery pipelines. Alongside the computational work I ran cell-based assays and mouse toxicity and efficacy studies, and carried out the statistical analysis backing clinical-trial applications.",
-    "tags": ["ADMET", "Cell assays", "In vivo", "Statistics"],
+    "title": "Computational drug discovery — industry",
+    "period": "AI Protein Compute Engineer · Shenzhen Liying Biotech",
+    "summary": "Applied generative and structure-based methods to active discovery programs: de novo peptide and protein design, small-molecule docking and affinity ranking, and molecular-dynamics validation. Delivered analysis and figures that fed directly into manuscripts and project decisions.",
+    "tags": [
+      "Generative design",
+      "Structure-based screening",
+      "Molecular dynamics",
+      "Hit evaluation"
+    ],
     "featured": false,
-    "links": []
+    "media": "",
+    "links": [],
+    "kind": "work"
+  },
+  {
+    "title": "In-house pipelines & automation",
+    "period": "AI Protein Compute Engineer · Shenzhen Liying Biotech",
+    "summary": "Built and maintained internal computational pipelines and agent-style tooling that wrap model inference, validation and triage into reproducible, bench-ready workflows — shortening the loop from a computed candidate to a recommendation.",
+    "tags": [
+      "Tooling",
+      "Automation",
+      "Reproducibility",
+      "Workflow"
+    ],
+    "featured": false,
+    "media": "",
+    "links": [],
+    "kind": "work"
+  },
+  {
+    "title": "Pharmacology & translational research support",
+    "period": "Industry research training",
+    "summary": "Supported early-stage pharmacology with ML evaluation (ADMET, activity) alongside cell-based and in vivo assay work and statistics that backed development decisions.",
+    "tags": [
+      "ADMET",
+      "Assay support",
+      "In vivo",
+      "Statistics"
+    ],
+    "featured": false,
+    "media": "",
+    "links": [],
+    "kind": "work"
   }
 ]

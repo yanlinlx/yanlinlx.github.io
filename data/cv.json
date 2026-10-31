@@ -3,13 +3,13 @@
 
   "education": [
     {
-      "left": "2023 – 2026",
+      "left": "Sept. 2023 – Jun. 2026",
       "title": "MSc in Pharmaceutical Sciences",
       "meta": "Bioinformatics and Drug Design · Chongqing University, Chongqing, China",
       "details": ["GPA 3.87 / 4.0 — ranked 2nd of 102"]
     },
     {
-      "left": "2019 – 2023",
+      "left": "Sept. 2019 – Jun. 2023",
       "title": "BSc in Pharmaceutical Science",
       "meta": "Chongqing University, Chongqing, China",
       "details": ["GPA 3.72 / 4.0 — ranked 2nd of 47"]
@@ -18,7 +18,19 @@
 
   "honors": [
     {
-      "left": "",
+      "left": "2025",
+      "title": "National Scholarship for Graduate Students",
+      "meta": "Top 1% in China · 2024–2025 academic year",
+      "details": []
+    },
+    {
+      "left": "2026",
+      "title": "Outstanding Graduate of Chongqing Municipality",
+      "meta": "Chongqing University",
+      "details": []
+    },
+    {
+      "left": "2025",
       "title": "Top 10 Academic Stars of Chongqing University",
       "meta": "8th edition",
       "details": []
@@ -30,7 +42,7 @@
       "details": []
     },
     {
-      "left": "",
+      "left": "2022",
       "title": "National Scholarship for Undergraduate Students",
       "meta": "Top 0.2% nationally · 2021–2022 academic year",
       "details": []
@@ -51,7 +63,7 @@
 
   "competitions": [
     {
-      "left": "",
+      "left": "2025",
       "title": "The 19th \u201cChallenge Cup\u201d National College Student Academic Science and Technology Competition",
       "meta": "Project leader · Third Prize, provincial level",
       "details": []

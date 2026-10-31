@@ -1,0 +1,128 @@
+{
+  "_comment": "Powers studentlife.html. `milestones` use {left,title,meta,details} like cv.json, plus optional `image` (single) or `images` (array of paths) pointing at assets/img/studentlife/*.jpg. All photos are resized and carry a tiled anti-theft watermark.",
+
+  "intro": "Seven years, 2019 to 2026 — from the first day of university to my master's graduation. This is the unofficial record: the moments that never made it onto a CV, told in chronological order. (Photos are watermarked to keep them mine.)",
+
+  "milestones": [
+    {
+      "left": "2019.09",
+      "title": "University begins",
+      "meta": "",
+      "details": [
+        "I thought I'd finally escaped the endless classes and exams everyone promised would end once I got to college. And of course, the very first lesson was military training!"
+      ],
+      "image": "assets/img/studentlife/sl01.jpg"
+    },
+    {
+      "left": "2019.11",
+      "title": "Elected class secretary",
+      "meta": "",
+      "details": [
+        "As an introvert, I decided to push myself and run for class secretary. And I actually won! 😀"
+      ],
+      "image": "assets/img/studentlife/sl02.jpg"
+    },
+    {
+      "left": "2019.11",
+      "title": "First chemistry labs",
+      "meta": "",
+      "details": [
+        "Started doing chemistry labs. Organic synthesis got pretty boring later on, but the copper sulfate crystals and orange-essential-oil extraction are moments I'll never forget."
+      ],
+      "images": [
+        "assets/img/studentlife/sl03.jpg",
+        "assets/img/studentlife/sl04.jpg"
+      ]
+    },
+    {
+      "left": "2020.01",
+      "title": "Marathon club",
+      "meta": "",
+      "details": [
+        "Joined the marathon club — I even planned to run a half marathon! It never happened, derailed by the pandemic and the rush of graduation. I also became the club's vice president 😀. I've started training again lately, so maybe I'll actually run that half marathon one day."
+      ],
+      "image": "assets/img/studentlife/sl05.jpg"
+    },
+    {
+      "left": "2020.03",
+      "title": "Online classes, pandemic era",
+      "meta": "",
+      "details": [
+        "Started the semester under the pandemic — online classes are something only Chinese students can truly relate to."
+      ]
+    },
+    {
+      "left": "2020.10",
+      "title": "First taste of research",
+      "meta": "",
+      "details": [
+        "Joined Professor Xue's lab and got my first real taste of research!"
+      ]
+    },
+    {
+      "left": "2023.06",
+      "title": "Bachelor's graduation",
+      "meta": "",
+      "details": [
+        "Graduated with my bachelor's! The on-and-off pandemic and research had settled my life back into something calm."
+      ],
+      "image": "assets/img/studentlife/sl06.jpg"
+    },
+    {
+      "left": "2023.09",
+      "title": "Master's begins",
+      "meta": "",
+      "details": [
+        "Started my master's. To qualify for a company internship in year two, I worked hard and finished my first project during year one — while still taking classes."
+      ]
+    },
+    {
+      "left": "2024.09",
+      "title": "Beijing · CR Double-Crane internship",
+      "meta": "",
+      "details": [
+        "Off to Beijing! I joined CR Double-Crane for a joint training program — my first time living far from home. There I learned mouse dosing and dissection, cell culture, and basic cell-based experiments."
+      ],
+      "images": [
+        "assets/img/studentlife/sl07.jpg",
+        "assets/img/studentlife/sl08.jpg"
+      ]
+    },
+    {
+      "left": "2024.09",
+      "title": "Work-life balance",
+      "meta": "",
+      "details": [
+        "After joining the company, I briefly lived the work-life balance I'd always wanted — my own time after work, weekend trips, and city breaks on long weekends."
+      ]
+    },
+    {
+      "left": "2025.02",
+      "title": "A new research project",
+      "meta": "",
+      "details": [
+        "Started a new graduate project and a busy life: lab work by day, computation by night."
+      ]
+    },
+    {
+      "left": "2026.06",
+      "title": "Master's graduation (valedictorian speech)",
+      "meta": "",
+      "details": [
+        "Graduated with my master's! I even gave the graduation speech as a student representative and was named an Outstanding Graduate of Chongqing — the moment my meritocratic streak finally paid off."
+      ],
+      "images": [
+        "assets/img/studentlife/sl09.jpg",
+        "assets/img/studentlife/sl10.jpg"
+      ]
+    },
+    {
+      "left": "2026.10",
+      "title": "Reflections",
+      "meta": "",
+      "details": [
+        "Right now I'm searching for the meaning of life. I used to think I'd lived a painful existence, but sorting through all this I realized how rich my life has been — joy and happiness, struggle and grit, even moments of breaking down, all now part of who I am. I don't know if anyone will ever read this, but looking back has already made me treasure and affirm my own effort."
+      ]
+    }
+  ]
+}

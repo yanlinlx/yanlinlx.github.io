@@ -14,6 +14,7 @@ No third-party packages required — standard library only.
 
 import html
 import json
+import sys
 from datetime import date
 from pathlib import Path
 
@@ -24,8 +25,8 @@ NAV = [
     ("index.html", "About"),
     ("publications.html", "Publications"),
     ("projects.html", "Projects"),
-    ("cv.html", "CV"),
-    ("videos.html", "Videos"),
+    ("cv.html", "Honours"),
+    ("studentlife.html", "Student Life"),
 ]
 
 
@@ -214,8 +215,31 @@ def render_pub_item(pub, me):
 </li>""".format(year=year, title=title, badge=badge, authors=authors, venue=venue_line, links=links_html)
 
 
+def render_entry_media(entry):
+    """Render 0/1/2 watermarked photos for a student-life milestone.
+
+    `entry` may carry `image` (single path) or `images` (list of paths).
+    Missing files are skipped with a warning so a broken upload never
+    breaks the build.
+    """
+    srcs = entry.get("images") or ([entry["image"]] if entry.get("image") else [])
+    if not srcs:
+        return ""
+    figs = []
+    for src in srcs:
+        if not (ROOT / src).exists():
+            sys.stderr.write("WARN build: student-life image not found, skipped: %s\n" % src)
+            continue
+        figs.append('<figure class="entry-media"><img loading="lazy" src="%s" alt="%s"></figure>'
+                    % (esc(src), esc(entry.get("title", ""))))
+    if not figs:
+        return ""
+    cls = "entry-media two" if len(figs) > 1 else "entry-media"
+    return '<div class="%s">%s</div>' % (cls, "".join(figs))
+
+
 def render_entry_list(entries):
-    """CV timeline: each entry is {left, title, meta, details[]}."""
+    """CV timeline: each entry is {left, title, meta, details[], image?, images?}."""
     if not entries:
         return '<p class="empty">Nothing here yet.</p>'
     # only reserve the date column if at least one entry actually uses it
@@ -227,9 +251,10 @@ def render_entry_list(entries):
         details = entry.get("details") or []
         details_html = ('<ul class="entry-details">%s</ul>'
                         % "".join("<li>%s</li>" % d for d in details)) if details else ""
+        media_html = render_entry_media(entry)
         items.append(
-            '<li class="entry">%s<div><p class="entry-title">%s</p>%s%s</div></li>'
-            % (left, entry.get("title", ""), meta, details_html)
+            '<li class="entry">%s<div><p class="entry-title">%s</p>%s%s%s</div></li>'
+            % (left, entry.get("title", ""), meta, details_html, media_html)
         )
     cls = "entry-list" if has_left else "entry-list no-left"
     return '<ul class="%s">%s</ul>' % (cls, "".join(items))
@@ -256,18 +281,61 @@ def render_pub_list(pubs, profile, empty_msg="Nothing here yet."):
     return '<ul class="pub-list">\n%s\n</ul>' % items
 
 
+def render_media(media, title):
+    """Return a <figure> for a project's media (gif/image or YouTube), or ''.
+
+    `media` may be:
+      - a string  -> image src (local file under ROOT, or a remote http(s) URL)
+      - a dict    -> {"src": "...", "caption": "..."}  (image)
+                  -> {"youtube": "ID", "caption": "..."}  (embedded video)
+    Local files that do not exist are skipped with a warning so a missing gif
+    never breaks the build.
+    """
+    if not media:
+        return ""
+    caption = ""
+    yt = None
+    src = None
+    if isinstance(media, str):
+        src = media
+    elif isinstance(media, dict):
+        src = media.get("src")
+        yt = media.get("youtube") or media.get("youtube_id")
+        caption = media.get("caption", "")
+    if yt:
+        inner = ('<div class="video-wrap"><iframe src="https://www.youtube.com/embed/%s" '
+                 'title="%s" loading="lazy" allowfullscreen></iframe></div>'
+                 % (esc(yt), esc(title)))
+        cap = ('<figcaption>%s</figcaption>' % esc(caption)) if caption else ""
+        return '<figure class="card-media">%s%s</figure>' % (inner, cap)
+    if not src:
+        return ""
+    is_remote = src.startswith("http://") or src.startswith("https://")
+    if not is_remote and not (ROOT / src).exists():
+        sys.stderr.write("WARN build: project media not found, skipped: %s\n" % src)
+        return ""
+    img = '<img loading="lazy" src="%s" alt="%s">' % (esc(src), esc(title))
+    cap = ('<figcaption>%s</figcaption>' % esc(caption)) if caption else ""
+    return '<figure class="card-media">%s%s</figure>' % (img, cap)
+
+
 def render_project_card(proj):
     tags = "".join("<li>%s</li>" % esc(t) for t in proj.get("tags", []))
     tags_html = '<ul class="tags">%s</ul>' % tags if tags else ""
     links = link_pills(proj.get("links", []))
     links_html = '<div class="pub-links">%s</div>' % links if links else ""
+    media_html = render_media(proj.get("media"), proj.get("title", ""))
     return """<article class="card">
-  <h3>{title}</h3>
-  <p class="period">{period}</p>
-  <p>{summary}</p>
-  {tags}
-  {links}
+  {media}
+  <div class="card-body">
+    <h3>{title}</h3>
+    <p class="period">{period}</p>
+    <p>{summary}</p>
+    {tags}
+    {links}
+  </div>
 </article>""".format(
+        media=media_html,
         title=esc(proj.get("title", "")),
         period=esc(proj.get("period", "")),
         summary=esc(proj.get("summary", "")),
@@ -283,59 +351,57 @@ def render_project_grid(projects, empty_msg="Nothing here yet."):
 
 
 def render_video_card(video):
-    vid = str(video.get("youtube_id", "")).strip()
-    title = esc(video.get("title", ""))
-    if vid:
-        thumb = '<img src="https://i.ytimg.com/vi/%s/hqdefault.jpg" alt="" loading="lazy">' % esc(vid)
-        note = ""
-    else:
-        thumb = ""
-        note = '<span class="video-note">Paste your YouTube id into <code>data/videos.json</code></span>'
-    play = ('<span class="video-play" aria-hidden="true">'
-            '<svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></span>')
-    return """<article class="video">
-  <div class="video-embed" role="button" tabindex="0" data-youtube="{vid}" data-title="{title}" aria-label="Play video: {title}">
-    {thumb}
-    {note}
-    {play}
-  </div>
-  <div class="video-body">
-    <h3>{title}</h3>
-    <p>{caption}</p>
-    <p class="video-meta"><span>{tools}</span><span>{date}</span></p>
-  </div>
-</article>""".format(
-        vid=esc(vid),
-        title=title,
-        thumb=thumb,
-        note=note,
-        play=play,
-        caption=esc(video.get("caption", "")),
-        tools=esc(video.get("tools", "")),
-        date=esc(video.get("date", "")),
-    )
+    """Deprecated: videos section removed in favour of Student Life."""
+    return ""
 
 
 def render_video_grid(videos, empty_msg="No videos yet."):
-    if not videos:
-        return '<p class="empty">%s</p>' % esc(empty_msg)
-    return '<div class="video-grid">\n%s\n</div>' % "\n".join(render_video_card(v) for v in videos)
+    """Deprecated: videos section removed in favour of Student Life."""
+    return ""
+
+
+def render_gallery(items):
+    out = []
+    for it in items or []:
+        src = it.get("src")
+        cap = it.get("caption", "")
+        if not src:
+            continue
+        if not (ROOT / src).exists():
+            sys.stderr.write("WARN build: student-life gallery image not found, skipped: %s\n" % src)
+            continue
+        out.append('<figure><img loading="lazy" src="%s" alt="%s"><figcaption>%s</figcaption></figure>'
+                   % (esc(src), esc(cap), esc(cap)))
+    if not out:
+        return '<p class="empty">Drop your photos into <code>assets/img/studentlife/</code> to fill this gallery.</p>'
+    return '<div class="gallery">\n%s\n</div>' % "\n".join(out)
+
+
+def studentlife_body(profile, sl):
+    def section(title, inner):
+        return '<section class="section"><h2>%s</h2>%s</section>' % (title, inner)
+    head = ('<div class="page-head"><h1>My Student Life</h1>'
+            '<p>%s</p></div>' % esc(sl.get("intro", "")))
+    parts = [
+        head,
+        '<main id="main">',
+        section("My Journey", render_entry_list(sl.get("milestones", []))),
+        '</main>',
+    ]
+    return '<div class="wrap narrow">\n%s\n</div>' % "\n".join(parts)
 
 
 # --------------------------------------------------------------------------
 # pages
 # --------------------------------------------------------------------------
 
-def home_body(profile, pubs, projects):
+def home_body(profile, cv):
     bio = "\n".join("<p class=\"lede\">%s</p>" % p for p in profile.get("bio", []))
     news = "".join(
         '<li><span class="date">%s</span><span>%s</span></li>' % (esc(n.get("date", "")), n.get("text", ""))
         for n in profile.get("news", [])
     )
     interests = "".join("<li>%s</li>" % esc(i) for i in profile.get("interests", []))
-
-    featured_pubs = [p for p in pubs if p.get("featured")] or pubs[:3]
-    featured_projects = [p for p in projects if p.get("featured")] or projects[:2]
 
     return """
 <div class="wrap layout">
@@ -354,13 +420,13 @@ def home_body(profile, pubs, projects):
     </section>
 
     <section class="section">
-      <h2>Selected publications</h2>
-      {pubs}
+      <h2>Education</h2>
+      {education}
     </section>
 
     <section class="section">
-      <h2>Selected projects</h2>
-      {projects}
+      <h2>Technical skills</h2>
+      {skills}
     </section>
   </main>
 </div>
@@ -369,8 +435,8 @@ def home_body(profile, pubs, projects):
         bio=bio,
         news=news,
         interests=interests,
-        pubs=render_pub_list(featured_pubs, profile, "No publications yet."),
-        projects=render_project_grid(featured_projects, "No projects yet."),
+        education=render_entry_list(cv.get("education", [])),
+        skills=render_skills(cv.get("skills", [])),
     )
 
 
@@ -384,24 +450,18 @@ def plain_body(profile, heading, intro, inner):
 """ % (intro_html, inner)
 
 
-def cv_body(profile, cv, projects, pubs):
+def honours_body(profile, cv):
     def section(title, inner):
         return '<section class="section"><h2>%s</h2>%s</section>' % (title, inner)
 
-    head = ('<div class="page-head"><h1>Curriculum vitae</h1>'
-            '<p>%s · <a href="mailto:%s">%s</a>. Print this page to PDF for a current copy.</p></div>'
-            % (esc(profile.get("affiliation", "")), esc(profile.get("email", "")),
-               esc(profile.get("email", ""))))
+    head = ('<div class="page-head"><h1>Honours</h1>'
+            '<p>Scholarships, awards and competition results.</p></div>')
 
     parts = [
         head,
         '<main id="main">',
-        section("Education", render_entry_list(cv.get("education", []))),
-        section("Research experience", render_project_grid(projects, "No projects yet.")),
-        section("Publications", render_pub_list(pubs, profile, "No publications yet.")),
         section("Honours &amp; awards", render_entry_list(cv.get("honors", []))),
         section("Competitions", render_entry_list(cv.get("competitions", []))),
-        section("Technical skills", render_skills(cv.get("skills", []))),
         '</main>',
     ]
     return '<div class="wrap narrow">\n%s\n</div>' % "\n".join(parts)
@@ -415,12 +475,12 @@ def main():
     profile = load("profile.json")
     pubs = load("publications.json")
     projects = load("projects.json")
-    videos = load("videos.json")
     cv = load("cv.json")
+    sl = load("studentlife.json")
 
     name = profile.get("name", "Home")
     outputs = {
-        "index.html": build_page(profile, "index.html", name, home_body(profile, pubs, projects)),
+        "index.html": build_page(profile, "index.html", name, home_body(profile, cv)),
         "publications.html": build_page(
             profile, "publications.html", "Publications — " + name,
             plain_body(profile, "Publications",
@@ -434,14 +494,12 @@ def main():
                        render_project_grid(projects, "No projects yet.")),
         ),
         "cv.html": build_page(
-            profile, "cv.html", "CV — " + name,
-            cv_body(profile, cv, projects, pubs),
+            profile, "cv.html", "Honours — " + name,
+            honours_body(profile, cv),
         ),
-        "videos.html": build_page(
-            profile, "videos.html", "Videos — " + name,
-            plain_body(profile, "Videos",
-                       "Molecular dynamics trajectories, structural animations and method walkthroughs.",
-                       render_video_grid(videos, "No videos yet.")),
+        "studentlife.html": build_page(
+            profile, "studentlife.html", "Student Life — " + name,
+            studentlife_body(profile, sl),
         ),
     }
 

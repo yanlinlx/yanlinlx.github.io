@@ -48,6 +48,17 @@ Open the files in `data/` with any text editor. They are plain JSON.
 - **publications.json** — one `{ ... }` block per paper. `"featured": true`
   also pins it to the homepage. `links` accepts any `{label, url}` pairs.
 - **projects.json** — same idea; add `"featured": true` to pin to the homepage.
+  Each project can show an animated gif / image / embedded video at the top of
+  its card via a `"media"` field:
+  - local gif:  `"media": "assets/gifs/my-project.gif"`  (put the file in
+    `assets/gifs/`; if the file is missing the card just renders without it, no
+    broken image)
+  - remote image: `"media": "https://.../clip.gif"`
+  - with caption: `"media": {"src": "assets/gifs/x.gif", "caption": "MD trajectory of ..."}`
+  - embedded YouTube: `"media": {"youtube": "VIDEO_ID", "caption": "..."}`
+  Keep each gif small — ideally ≤ 10 MB (GitHub Pages warns above 50 MB and
+  rejects a single file above 100 MB). Optimise with e.g.
+  `ffmpeg -i in.mp4 -vf "scale=480:-1,fps=15" -loop 0 out.gif`.
 - **cv.json** — the CV page. Sections `education`, `honors`, `competitions`
   (each entry is `{left, title, meta, details[]}`, where `left` is the date
   column — drop it if the whole section has no dates) and `skills`
