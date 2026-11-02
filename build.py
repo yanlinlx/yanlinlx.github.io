@@ -29,6 +29,11 @@ NAV = [
     ("studentlife.html", "Student Life"),
 ]
 
+# Privacy-friendly visitor analytics via GoatCounter (no cookie banner needed).
+# Register at https://www.goatcounter.com — this is the subdomain you pick there.
+# Set to "" to disable tracking entirely.
+GOATCOUNTER_CODE = "liyanlin"
+
 
 # --------------------------------------------------------------------------
 # helpers
@@ -119,6 +124,7 @@ PAGE = """<!DOCTYPE html>
   </div>
 </footer>
 <script src="assets/site.js"></script>
+{{ANALYTICS}}
 </body>
 </html>
 """
@@ -144,6 +150,14 @@ def build_page(profile, active, page_title, body):
         "knowsAbout": profile.get("interests", []),
     }, ensure_ascii=False)
 
+    if GOATCOUNTER_CODE:
+        analytics = (
+            '<script data-goatcounter="https://%s.goatcounter.com/count" '
+            'async src="https://gc.zgo.at/count.js"></script>' % GOATCOUNTER_CODE
+        )
+    else:
+        analytics = ""
+
     return fill(
         PAGE,
         TITLE=esc(page_title),
@@ -154,6 +168,7 @@ def build_page(profile, active, page_title, body):
         BRAND=esc(profile.get("name", "")),
         NAV=render_nav(active),
         BODY=body,
+        ANALYTICS=analytics,
         YEAR=date.today().year,
         BUILT=date.today().isoformat(),
     )
