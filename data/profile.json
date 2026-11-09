@@ -10,12 +10,6 @@
   "description": "Yanlin Li — computational protein and peptide design at Chongqing University. Generative models, synthetic binding proteins, and structure-based drug discovery.",
   "highlight_author": "Yanlin Li",
 
-  "bio": [
-    "I trained as a computational biologist at the School of Pharmaceutical Sciences, Chongqing University, and now work as an AI Protein Computational Engineer at Shenzhen Liying Biotechnology — applying generative and structure-based methods to CNS drug discovery. My focus is synthetic binding proteins (SBPs) — small engineered binders that compete with antibodies on specificity and affinity while being cheaper to produce and easier to deliver.",
-    "My work runs along three threads. I maintain SYNBIP, the reference database for synthetic binding proteins, and co-led its 2.0 release. I apply deep-learning design frameworks such as ProteinMPNN to expand the sequence space of known SBP scaffolds. And most recently I have been training a diffusion-based generative model for peptide design, with an external property predictor wired in as a constraint.",
-    "What ties this together is a bias toward verification: solubility, thermal stability and binding affinity get checked rather than assumed, whether the candidate came out of a generative model or a docking run."
-  ],
-
   "interests": [
     "Generative models for protein and peptide design (diffusion models, ProteinMPNN)",
     "Synthetic binding proteins — scaffolds, epitopes and sequence space",
