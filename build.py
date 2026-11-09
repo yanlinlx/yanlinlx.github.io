@@ -412,10 +412,6 @@ def studentlife_body(profile, sl):
 
 def home_body(profile, cv):
     bio = "\n".join("<p class=\"lede\">%s</p>" % p for p in profile.get("bio", []))
-    news = "".join(
-        '<li><span class="date">%s</span><span>%s</span></li>' % (esc(n.get("date", "")), n.get("text", ""))
-        for n in profile.get("news", [])
-    )
     interests = "".join("<li>%s</li>" % esc(i) for i in profile.get("interests", []))
 
     return """
@@ -423,16 +419,6 @@ def home_body(profile, cv):
   {sidebar}
   <main id="main">
     <section class="section">{bio}</section>
-
-    <section class="section">
-      <h2>News</h2>
-      <ul class="news">{news}</ul>
-    </section>
-
-    <section class="section">
-      <h2>Research interests</h2>
-      <ul class="tags">{interests}</ul>
-    </section>
 
     <section class="section">
       <h2>Education</h2>
@@ -443,15 +429,19 @@ def home_body(profile, cv):
       <h2>Technical skills</h2>
       {skills}
     </section>
+
+    <section class="section">
+      <h2>Research interests</h2>
+      <ul class="tags">{interests}</ul>
+    </section>
   </main>
 </div>
 """.format(
         sidebar=render_sidebar(profile),
         bio=bio,
-        news=news,
-        interests=interests,
         education=render_entry_list(cv.get("education", [])),
         skills=render_skills(cv.get("skills", [])),
+        interests=interests,
     )
 
 

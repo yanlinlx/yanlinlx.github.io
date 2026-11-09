@@ -29,13 +29,5 @@
     { "label": "Google Scholar", "url": "https://scholar.google.com/citations?user=2ziiUyIAAAAJ" },
     { "label": "SYNBIP database", "url": "https://synbip.idrblab.net/" },
     { "label": "Honours", "url": "cv.html" }
-  ],
-
-  "news": [
-    { "date": "Now", "text": "Open to PhD positions in computational protein design and AI-aided drug discovery." },
-    { "date": "May 2025", "text": "ProteinMPNN sequence-space paper published in <em>Frontiers of Computer Science</em>." },
-    { "date": "Feb 2025", "text": "Review on data- and AI-driven SBP discovery published in <em>Trends in Pharmacological Sciences</em>." },
-    { "date": "Jan 2025", "text": "SYNBIP 2.0 published in <em>Nucleic Acids Research</em>." },
-    { "date": "Sep 2024", "text": "Began industry research training in a pharmacology group, bridging ML evaluation with cell-based and in vivo assays." }
   ]
 }
